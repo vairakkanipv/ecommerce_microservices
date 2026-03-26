@@ -3,6 +3,9 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+order_service/order_service/__pycache__/*.*
+product_service/product_service/__pycache__/*.*
+
 # C extensions
 *.so
 
