@@ -121,3 +121,22 @@ STATIC_URL = 'static/'
 
 # Port for this service
 # Run with: python manage.py runserver 8001
+
+from datetime import timedelta
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',  # every endpoint requires login
+    ),
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME':  timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    # IMPORTANT: same secret key in both services so both can verify tokens
+    'SIGNING_KEY': 'super-secret-key-use-env-variable-in-production',
+}
